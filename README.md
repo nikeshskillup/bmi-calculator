@@ -1,17 +1,18 @@
 
-# Hands-on lab: Final Project - Shipping Calculator Application
+# Body Mass Index (BMI) Calculator Application
 
 ## Estimated Time: 60 minutes
 
 ## Objectives:
 
-In this lab, you will build a Simple Shipping Calculator Application that consists of an Admin Login page for authentication. Once authenticated, admin can access the Shipping Calculator dashboard to manage freight rates. The application will allow admin to add new freight rates by entering the package sizes and corresponding shipping rates. The entered freight rates will be displayed in a table format for easy reference.
+Build a BMI (Body Mass Index) Calculator React Application to help users assess their physical health by entering height and weight. Calculate the BMI and display its category, enabling users to monitor their health conveniently.
 
 ## Exercise 1: Setup a React Project
 
 **Fork the sample Git repository**
 
-**1.** Go to the project repository [here](https://github.com/ibm-developer-skills-network/utckx-shipping-calculator.git) which has the partially developed code for this react project.
+**1.** Go to the project repository [here](https://github.com/nikeshskillup/react-app-bmi-calculator.git) 
+which has the partially developed code for this react project.
 
 **2.** Create a fork of the repository into your own GitHub Account. 
 
@@ -26,7 +27,7 @@ In this lab, you will build a Simple Shipping Calculator Application that consis
 
 **4.** In the Visual studio code, Open a terminal window by using the menu in the editor: Terminal > New Terminal.
 
-<img src="images/vs-code-starting-img.png" width="75%">
+<img src="images/vs-code-starting-img.png" width="75%"> 
 
 <img src="images/new-terminal.png" width="75%"/> 
 
@@ -34,7 +35,7 @@ In this lab, you will build a Simple Shipping Calculator Application that consis
 
 <img src="images/cd.png" width="75%"/> 
 
-**6.** Clone the forked repository by running the command given below:
+**6.** Clone the forked repository by running the command given below: 
 
 ```
 git clone <your_repo_name>
