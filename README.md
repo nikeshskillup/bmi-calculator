@@ -99,6 +99,9 @@ In the `app.js` file, we begin by declaring the necessary `useState` variables t
 **iv.** `bmi` and `setBMI`: These variables store the calculated BMI value.
 **v.** `bmiCategory` and `setBMICategory`: These variables store the corresponding BMI category based on the calculated BMI value.
 
+<details>
+<Summary>Click to view the code</Summary>
+
 ```javascript
 const [height, setHeight] = useState('');
 const [weight, setWeight] = useState('');
@@ -106,6 +109,8 @@ const [unit, setUnit] = useState('metric'); // Default to metric
 const [bmi, setBMI] = useState(null);
 const [bmiCategory, setBMICategory] = useState('');
 ```
+</details>
+
 
 ## Step 2: Create UI Components
 
