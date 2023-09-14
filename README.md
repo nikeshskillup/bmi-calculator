@@ -72,7 +72,7 @@ The UI of the Shipping Calculator Application that you will create in this lab w
 
 <img src="images/bmi-app-1.png" width="75%"/>
 
-<img src="images/bmi-2.png" width="75%"/>
+<img src="images/bmi-app-2.png" width="75%"/>
 
 ## Features
 **i.** Calculate BMI in both metric (kg/cm) and imperial (lb/in) units.
