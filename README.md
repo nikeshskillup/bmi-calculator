@@ -74,11 +74,11 @@ The UI of the Shipping Calculator Application that you will create in this lab w
 
 <img src="images/bmi-2.png" width="75%"/>
 
-**Features**
-Calculate BMI in both metric (kg/cm) and imperial (lb/in) units.
-Determine BMI category (underweight, average, overweight, or obese).
-Responsive design for various screen sizes.
-User-friendly interface with input validation.
+## Features
+**i.** Calculate BMI in both metric (kg/cm) and imperial (lb/in) units.
+**ii.** Determine BMI category (underweight, average, overweight, or obese).
+**iii.** Responsive design for various screen sizes.
+**iv.** User-friendly interface with input validation.
 
 In this project, you will leverage the power of React.js to create the BMI Calculator Application with two measuring units CM/KG and Ft/Lb.
 
@@ -90,11 +90,11 @@ React.js facilitates the management of state, UI rendering, and event handling, 
 
 In the `app.js` file, we begin by declaring the necessary `useState` variables to manage the state of our BMI Calculator. These variables are used to store the user's input for height, weight, selected unit, calculated BMI, and the corresponding BMI category.
 
-`height` and `setHeight`: These variables manage the user's input for height.
-`weight` and `setWeight`: These variables manage the user's input for weight.
-`unit` and `setUnit`: These variables manage the selected unit (metric or imperial) for height and weight inputs. The default unit is set to "metric."
-`bmi` and `setBMI`: These variables store the calculated BMI value.
-`bmiCategory` and `setBMICategory`: These variables store the corresponding BMI category based on the calculated BMI value.
+**i.** `height` and `setHeight`: These variables manage the user's input for height.
+**ii.** `weight` and `setWeight`: These variables manage the user's input for weight.
+**iii.** `unit` and `setUnit`: These variables manage the selected unit (metric or imperial) for height and weight inputs. The default unit is set to "metric."
+**iv.** `bmi` and `setBMI`: These variables store the calculated BMI value.
+**v.** `bmiCategory` and `setBMICategory`: These variables store the corresponding BMI category based on the calculated BMI value.
 
 ```javascript
 const [height, setHeight] = useState('');
@@ -285,13 +285,13 @@ body {
 
 In this step, we'll implement the `calculateBMI` function in the `app.js` file. This function calculates the BMI (Body Mass Index) based on the user's input for height, weight, and selected units (cm/kg or ft/lb). Additionally, it determines the BMI category and updates the state variables accordingly.
 
-The function begins by parsing the user's input for height and weight into floating-point numbers (h and w).
-It then checks the selected unit (unit) to determine whether the user has chosen metric or imperial units.
-If metric units are selected and valid height and weight inputs are provided, the BMI is calculated using the formula: weight (kg) / (height (m) * height (m)). The result is rounded to two decimal places.
-Based on the calculated BMI value, the corresponding BMI category is determined and set using the setBMICategory function.
-If imperial units are selected and valid inputs are provided, the height is converted from feet to inches, and the BMI is calculated using the formula: (weight (lb) / (height (in) * height (in))) * 703.
-Again, the BMI category is determined and set based on the calculated BMI value.
-If any invalid input is detected (e.g., negative values or empty fields), the BMI and BMI category are reset to null and an empty string.
+**i.** The function begins by parsing the user's input for height and weight into floating-point numbers (h and w).
+**ii.** It then checks the selected unit (unit) to determine whether the user has chosen metric or imperial units.
+**iii.** If metric units are selected and valid height and weight inputs are provided, the BMI is calculated using the formula: weight (kg) / (height (m) * height (m)). The result is rounded to two decimal places.
+**iv.** Based on the calculated BMI value, the corresponding BMI category is determined and set using the setBMICategory function.
+**v.** If imperial units are selected and valid inputs are provided, the height is converted from feet to inches, and the BMI is calculated using the formula: (weight (lb) / (height (in) * height (in))) * 703.
+**vi.** Again, the BMI category is determined and set based on the calculated BMI value.
+**vii.** If any invalid input is detected (e.g., negative values or empty fields), the BMI and BMI category are reset to null and an empty string.
 
 ```javascript
 const calculateBMI = () => {
@@ -344,11 +344,11 @@ const calculateBMI = () => {
 
 In this step, we'll implement the `handleUnitChange` function in the `app.js` file. This function is responsible for handling the change in units (from cm/kg to ft/lb or vice versa) when the user selects a different unit from the dropdown menu. It also resets the input fields, BMI result, and BMI category when the unit is changed.
 
-The function is triggered when the user selects a different unit from the dropdown menu (e.target.value contains the selected unit).
-It updates the unit state variable with the newly selected unit.
-The height and weight input fields are reset to empty strings using setHeight('') and setWeight(''), ensuring that any previous values are cleared.
-The BMI result (bmi) is set to null using setBMI(null) to remove any previously calculated BMI value.
-The BMI category (bmiCategory) is also reset to an empty string using setBMICategory('') to clear any previous BMI category.
+**i.** The function is triggered when the user selects a different unit from the dropdown menu (e.target.value contains the selected unit).
+**ii.** It updates the unit state variable with the newly selected unit.
+**iii.** The height and weight input fields are reset to empty strings using setHeight('') and setWeight(''), ensuring that any previous values are cleared.
+**iv.** The BMI result (bmi) is set to null using setBMI(null) to remove any previously calculated BMI value.
+**v.** The BMI category (bmiCategory) is also reset to an empty string using setBMICategory('') to clear any previous BMI category.
 
 ```javascript
 const handleUnitChange = (e) => {
