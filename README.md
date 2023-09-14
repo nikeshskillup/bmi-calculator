@@ -319,6 +319,9 @@ In this step, we'll implement the `calculateBMI` function in the `app.js` file. 
 **vii.** If any invalid input is detected (e.g., negative values or empty fields), the BMI and BMI category are reset to null and an empty string.
 
 
+<details>
+<Summary>Click to view the code</Summary>
+
 ```javascript
 const calculateBMI = () => {
   const h = parseFloat(height);
@@ -365,6 +368,7 @@ const calculateBMI = () => {
   }
 };
 ```
+</details>
 
 ## Step 5: Implement the `handleUnitChange` Function
 
@@ -375,6 +379,8 @@ In this step, we'll implement the `handleUnitChange` function in the `app.js` fi
 **iii.** The height and weight input fields are reset to empty strings using setHeight('') and setWeight(''), ensuring that any previous values are cleared.
 **iv.** The BMI result (bmi) is set to null using setBMI(null) to remove any previously calculated BMI value.
 **v.** The BMI category (bmiCategory) is also reset to an empty string using setBMICategory('') to clear any previous BMI category.
+
+
 
 ```javascript
 const handleUnitChange = (e) => {
@@ -390,6 +396,10 @@ const handleUnitChange = (e) => {
 ## Step 6: Finalize the `app.js` File
 
 In this step, we'll provide the complete `app.js` file that incorporates all the previous steps' solutions. This file contains the entire React component for the BMI Calculator, including the state variables, user interface elements, event handlers, and the BMI calculation logic.
+
+
+<details>
+<Summary>Click to view the code</Summary>
 
 ```javascript
 import React, { useState } from 'react';
@@ -515,6 +525,7 @@ function App() {
 
 export default App;
 ```
+</details>
 
 ## Launch and view your react app on the browser
 
