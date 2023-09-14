@@ -94,9 +94,13 @@ React.js facilitates the management of state, UI rendering, and event handling, 
 In the `app.js` file, we begin by declaring the necessary `useState` variables to manage the state of our BMI Calculator. These variables are used to store the user's input for height, weight, selected unit, calculated BMI, and the corresponding BMI category.
 
 **i.** `height` and `setHeight`: These variables manage the user's input for height.
+
 **ii.** `weight` and `setWeight`: These variables manage the user's input for weight.
+
 **iii.** `unit` and `setUnit`: These variables manage the selected unit (metric or imperial) for height and weight inputs. The default unit is set to "metric."
+
 **iv.** `bmi` and `setBMI`: These variables store the calculated BMI value.
+
 **v.** `bmiCategory` and `setBMICategory`: These variables store the corresponding BMI category based on the calculated BMI value.
 
 <details>
@@ -115,6 +119,9 @@ const [bmiCategory, setBMICategory] = useState('');
 ## Step 2: Create UI Components
 
 In the `app.js` file, we define the user interface (UI) components required for the BMI Calculator. These components include input fields for height and weight, a dropdown to select units (cm/kg or ft/lb), a button to trigger the BMI calculation, and elements to display the calculated BMI and BMI category.
+
+<details>
+<Summary>Click to view the code</Summary>
 
 ```jsx
 <div className="container">
@@ -171,10 +178,14 @@ In the `app.js` file, we define the user interface (UI) components required for 
   </div>
 </div>
 ```
+</details>
 
 ## Step 3: Define CSS Styles for the UI
 
 To style the user interface (UI) of the BMI Calculator, we utilize CSS. The following CSS styles are defined in the `app.css` file to achieve a clean and visually appealing design:
+
+<details>
+<Summary>Click to view the code</Summary>
 
 ```css
 /* App.css */
@@ -287,19 +298,26 @@ body {
   color: red; /* Red for Overweight */
 }
 ```
-
+</details>
 
 ## Step 4: Implement the `calculateBMI` Function
 
 In this step, we'll implement the `calculateBMI` function in the `app.js` file. This function calculates the BMI (Body Mass Index) based on the user's input for height, weight, and selected units (cm/kg or ft/lb). Additionally, it determines the BMI category and updates the state variables accordingly.
 
 **i.** The function begins by parsing the user's input for height and weight into floating-point numbers (h and w).
+
 **ii.** It then checks the selected unit (unit) to determine whether the user has chosen metric or imperial units.
+
 **iii.** If metric units are selected and valid height and weight inputs are provided, the BMI is calculated using the formula: weight (kg) / (height (m) * height (m)). The result is rounded to two decimal places.
+
 **iv.** Based on the calculated BMI value, the corresponding BMI category is determined and set using the setBMICategory function.
+
 **v.** If imperial units are selected and valid inputs are provided, the height is converted from feet to inches, and the BMI is calculated using the formula: (weight (lb) / (height (in) * height (in))) * 703.
+
 **vi.** Again, the BMI category is determined and set based on the calculated BMI value.
+
 **vii.** If any invalid input is detected (e.g., negative values or empty fields), the BMI and BMI category are reset to null and an empty string.
+
 
 ```javascript
 const calculateBMI = () => {
