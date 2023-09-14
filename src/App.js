@@ -11,28 +11,45 @@ function App() {
   const calculateBMI = () => {
     const h = parseFloat(height);
     const w = parseFloat(weight);
-
-    if (unit === 'metric') {
+  
+    if (unit === 'metric' && h > 0 && w > 0) {
       const bmiValue = (w / ((h / 100) * (h / 100))).toFixed(2);
       setBMI(bmiValue);
-    } else if (unit === 'imperial') {
+  
+      // Determine BMI category based on the calculated BMI
+      if (bmiValue <= 18.5) {
+        setBMICategory('Underweight');
+      } else if (bmiValue <= 24.9) {
+        setBMICategory('Average');
+      } else if (bmiValue <= 29.9) {
+        setBMICategory('Overweight');
+      } else if (bmiValue >= 30) {
+        setBMICategory('Obese');
+      } else {
+        setBMICategory('BMI');
+      }
+    } else if (unit === 'imperial' && h > 0 && w > 0) {
       // Convert height from feet to inches
       const heightInInches = h * 12;
       const bmiValue = ((w / (heightInInches * heightInInches)) * 703).toFixed(2);
       setBMI(bmiValue);
-    }
-
-    // Determine BMI category
-    if (bmi <= 18.5) {
-      setBMICategory('Underweight');
-    } else if (bmi <= 24.9) {
-      setBMICategory('Average');
-    } else if (bmi <= 29.9) {
-      setBMICategory('Overweight');
-    } else if (bmi >= 30) {
-      setBMICategory('Obese');
+  
+      // Determine BMI category based on the calculated BMI
+      if (bmiValue <= 18.5) {
+        setBMICategory('Underweight');
+      } else if (bmiValue <= 24.9) {
+        setBMICategory('Average');
+      } else if (bmiValue <= 29.9) {
+        setBMICategory('Overweight');
+      } else if (bmiValue >= 30) {
+        setBMICategory('Obese');
+      } else {
+        setBMICategory('BMI');
+      }
     } else {
-      setBMICategory('BMI');
+      // Handle invalid input (e.g., negative values or empty fields)
+      setBMI(null);
+      setBMICategory('');
     }
   };
 
@@ -50,6 +67,17 @@ function App() {
       <div className="appContainer">
         <h1 className="heading">BMI Calculator</h1>
         <div className="input-container">
+        <div className="unit-select">
+            <label className="label">Select Units:</label>
+            <select
+              value={unit}
+              onChange={handleUnitChange}
+              className="unit-dropdown"
+            >
+              <option value="metric" className='unit-option'>cm/kg</option>
+              <option value="imperial">ft/lb</option>
+            </select>
+          </div>
           <label className="label">
             Height ({unit === 'metric' ? 'CM' : 'FT'}):
             <input
@@ -70,17 +98,7 @@ function App() {
               placeholder={`Enter weight (${unit === 'metric' ? 'KG' : 'LB'})`}
             />
           </label>
-          <div className="unit-select">
-            <label className="label">Select Units:</label>
-            <select
-              value={unit}
-              onChange={handleUnitChange}
-              className="unit-dropdown"
-            >
-              <option value="metric" className='unit-option'>cm/kg</option>
-              <option value="imperial">ft/lb</option>
-            </select>
-          </div>
+          
         </div>
         <button
           onClick={calculateBMI}

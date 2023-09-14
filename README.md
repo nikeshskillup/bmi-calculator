@@ -43,7 +43,7 @@ git clone <your_repo_name>
 
 <img src="images/git-clone.png" width="75%"/> 
 
-**7.** This will clone the repository with Shipping Calculator application files in your home directory in the Visual Studio Code. You can check the source folder created by using the below command.
+**7.** This will clone the repository with BMI Calculator application files in your home directory in the Visual Studio Code. You can check the source folder created by using the below command.
 
 ```bash
 ls
@@ -52,7 +52,7 @@ ls
 **8.** Change to the project directory and check the project structure and files within it, using the below command.
 
 ```bash
-cd utckx-shipping-calculator && ls
+cd react-app-bmi-calculator && ls
 ```
 
 **9.** All packages required to be installed are listed in the file `package.json`. Execute the command given below, to save and install the packages.
@@ -61,7 +61,7 @@ cd utckx-shipping-calculator && ls
 npm install -s
 ```
 
-**10.** The folder structure of the Shipping Calculator Application should be similar to the structure shown in the screenshot below. 
+**10.** The folder structure of the BMI Calculator Application should be similar to the structure shown in the screenshot below. 
 
 <img src="images/file-explorer.png" width=200/>
 
@@ -70,457 +70,419 @@ npm install -s
 
 The UI of the Shipping Calculator Application that you will create in this lab will be similar to the images shown below.
 
-<img src="images/shipping-app-1.png" width="75%"/>
+<img src="images/bmi-app-1.png" width="75%"/>
 
-<img src="images/shipping-2.png" width="75%"/>
+<img src="images/bmi-2.png" width="75%"/>
 
+**Features**
+Calculate BMI in both metric (kg/cm) and imperial (lb/in) units.
+Determine BMI category (underweight, average, overweight, or obese).
+Responsive design for various screen sizes.
+User-friendly interface with input validation.
 
-The application has the following four components:
-
-- Chart.js
-- LoginForm.js
-- ShippingCalculator.js
-- DestinationList.js
-
-The source folder `src` contains data files which will be used in this application.
-
-It has the following two JSON files :
-- India-city-names.json - A JSON file containing a list of India cities.
-- US_States_and_Cities.json - A JSON file containing a list of US states and cities.
-
-
-In this final project, you will leverage the power of React.js to create the Shipping Calculator Application with Admin Login.
+In this project, you will leverage the power of React.js to create the BMI Calculator Application with two measuring units CM/KG and Ft/Lb.
 
 React.js facilitates the management of state, UI rendering, and event handling, making it an ideal choice for building interactive and dynamic web applications.
 
-#### Details of the four components: 
+**Task 1**: **Create the BMICalculator Component**
 
-**ShippingCalculator Component:** 
+## Step 1: Declare Required `useState` Variables
 
-- The main component that manages admin authentication, adding freight rates, and displaying the rates in a chart. 
-- It tracks the login status, freight rates, package size, destination, rate, and selected currency.
+In the `app.js` file, we begin by declaring the necessary `useState` variables to manage the state of our BMI Calculator. These variables are used to store the user's input for height, weight, selected unit, calculated BMI, and the corresponding BMI category.
 
-**LoginForm Component:** 
+`height` and `setHeight`: These variables manage the user's input for height.
+`weight` and `setWeight`: These variables manage the user's input for weight.
+`unit` and `setUnit`: These variables manage the selected unit (metric or imperial) for height and weight inputs. The default unit is set to "metric."
+`bmi` and `setBMI`: These variables store the calculated BMI value.
+`bmiCategory` and `setBMICategory`: These variables store the corresponding BMI category based on the calculated BMI value.
 
-- Responsible for displaying a login form, allowing admin to input their credentials. 
-- It triggers the login process when the login button is clicked and communicates the login status to the ShippingCalculator component.
+```javascript
+const [height, setHeight] = useState('');
+const [weight, setWeight] = useState('');
+const [unit, setUnit] = useState('metric'); // Default to metric
+const [bmi, setBMI] = useState(null);
+const [bmiCategory, setBMICategory] = useState('');
 
-**Chart Component:** 
+## Step 2: Create UI Components
 
-- Receives freight rates and currency as props and displays them in a tabular format. 
-- It formats the shipping rates with the appropriate currency symbol (USD or INR) and shows the package weight, destination, and shipping rate in the chart.
+In the `app.js` file, we define the user interface (UI) components required for the BMI Calculator. These components include input fields for height and weight, a dropdown to select units (cm/kg or ft/lb), a button to trigger the BMI calculation, and elements to display the calculated BMI and BMI category.
 
-**DestinationList Components:** 
-
-- This file contains data that provides options for city and state selections in the ShippingCalculator component. 
-- It is used to dynamically generate the dropdown options based on the selected unit of measurement for package weight (KG or LB). 
-- The file is typically located in the src directory, within the data subdirectory.
-
-
-**Task 1**: **Implement the LoginForm Component**
-
-1. Within the `LoginForm` component, the essential dependencies and the React hook `useState` have been imported from the React library.
-
-2. We have already declared a state variable for the username now, utilize the useState hook to declare a state variable for the password.
-
-```
-const [password, setPassword] = useState('');
-```
-
-3. The `handleLogin` function is responsible for handling the login process. In a real-world application, this is where authentication would typically occur. However, for simplicity, we are using hardcoded credentials, where the username is "admin" and the password is "admin." If the provided username and password match these values, the `onLogin` function is called. Otherwise, an alert is triggered indicating that the username or password is invalid.
-
-```
-const handleLogin = () => {
-    // In a real application, you would perform authentication here
-    // For simplicity, we're using hardcoded username "admin" and password "admin"
-    if (username === 'admin' && password === 'admin') {
-      onLogin();
-    } else {
-      alert('Invalid username or password');
-    }
-  };
-
-```
-4. This code snippet comprises an Admin Login form, which features a prominent "Admin Login" heading. The form includes input fields for entering both a username and a password. These input fields are closely connected to the `username` and `password` state variables, ensuring that any user input directly updates these variables. 
-
-- To further facilitate interaction, `onChange` event handlers are in place for both input fields, monitoring user input and dynamically modifying the associated state variables. Finally, the form is equipped with a `Login` button, and when clicked, it activates the `handleLogin` function to initiate the login process.
-
-- The code for the username input field is already provided. Now, you should complete the password input field and add a login button to initiate the login process.
-
-```
-<input
-type="password"
-placeholder="Enter password"
-value={password}
-onChange={(e) => setPassword(e.target.value)}
-/>
-<button onClick={handleLogin}>Login</button>
-
-```
-
-5. The finalized LoginForm.js should resemble the code snippet given below:
-
-<details>
-<Summary>Click to view the code</Summary>
-
-``` js
-
-import React, { useState } from 'react';
-
-const LoginForm = ({ onLogin }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleLogin = () => {
-    // In a real application, you would perform authentication here
-    // For simplicity, we're using hardcoded username "admin" and password "admin"
-    if (username === 'admin' && password === 'admin') {
-      onLogin();
-    } else {
-      alert('Invalid username or password');
-    }
-  };
-
-
-  return (
-    <div>
-      <h2>Admin Login</h2>
-      <input
-        type="text"
-        placeholder="Enter username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Enter password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Login</button>
+```jsx
+<div className="container">
+  <div className="appContainer">
+    <h1 className="heading">BMI Calculator</h1>
+    <div className="input-container">
+    <div className="unit-select">
+        <label className="label">Select Units:</label>
+        <select
+          value={unit}
+          onChange={handleUnitChange}
+          className="unit-dropdown"
+        >
+          <option value="metric" className='unit-option'>cm/kg</option>
+          <option value="imperial">ft/lb</option>
+        </select>
+      </div>s
+      <label className="label">
+        Height ({unit === 'metric' ? 'CM' : 'FT'}):
+        <input
+          type="text"
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          className="input"
+          placeholder={`Enter height (${unit === 'metric' ? 'CM' : 'FT'})`}
+        />
+      </label>
+      <label className="label">
+        Weight ({unit === 'metric' ? 'KG' : 'LB'}):
+        <input
+          type="text"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          className="input"
+          placeholder={`Enter weight (${unit === 'metric' ? 'KG' : 'LB'})`}
+        />
+      </label>
+      
     </div>
-  );
+    <button
+      onClick={calculateBMI}
+      className={`button ${bmi ? 'buttonHover' : ''}`}
+    >
+      Calculate BMI
+    </button>
+    {bmi !== null && (
+      <div className="result">
+        <h2>Your BMI: {bmi}</h2>
+        <p className={`bmi-category ${bmiCategory.toLowerCase()}`}>
+          Your BMI Category: {bmiCategory}
+        </p>
+      </div>
+    )}
+  </div>
+</div>
+
+## Step 3: Define CSS Styles for the UI
+
+To style the user interface (UI) of the BMI Calculator, we utilize CSS. The following CSS styles are defined in the `app.css` file to achieve a clean and visually appealing design:
+
+```css
+/* App.css */
+
+body {
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  font-family: 'Arial, sans-serif';
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.appContainer {
+  text-align: center;
+  font-family: 'Arial, sans-serif';
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.unit-dropdown {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.unit-option {
+  width: 90%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.button {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttonHover {
+  background-color: #0056b3;
+}
+
+.result {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  color: #007bff;
+}
+
+/* BMI Category styles */
+.bmi-category {
+  font-size: 1.5rem;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Style BMI categories with different colors */
+.underweight {
+  color: blue; /* Blue for Underweight */
+}
+
+.average {
+  color: green; /* Green for Average */
+}
+
+.overweight {
+  color: red; /* Red for Overweight */
+}
+
+
+## Step 4: Implement the `calculateBMI` Function
+
+In this step, we'll implement the `calculateBMI` function in the `app.js` file. This function calculates the BMI (Body Mass Index) based on the user's input for height, weight, and selected units (cm/kg or ft/lb). Additionally, it determines the BMI category and updates the state variables accordingly.
+
+The function begins by parsing the user's input for height and weight into floating-point numbers (h and w).
+It then checks the selected unit (unit) to determine whether the user has chosen metric or imperial units.
+If metric units are selected and valid height and weight inputs are provided, the BMI is calculated using the formula: weight (kg) / (height (m) * height (m)). The result is rounded to two decimal places.
+Based on the calculated BMI value, the corresponding BMI category is determined and set using the setBMICategory function.
+If imperial units are selected and valid inputs are provided, the height is converted from feet to inches, and the BMI is calculated using the formula: (weight (lb) / (height (in) * height (in))) * 703.
+Again, the BMI category is determined and set based on the calculated BMI value.
+If any invalid input is detected (e.g., negative values or empty fields), the BMI and BMI category are reset to null and an empty string.
+
+```javascript
+const calculateBMI = () => {
+  const h = parseFloat(height);
+  const w = parseFloat(weight);
+
+  if (unit === 'metric' && h > 0 && w > 0) {
+    const bmiValue = (w / ((h / 100) * (h / 100))).toFixed(2);
+    setBMI(bmiValue);
+
+    // Determine BMI category based on the calculated BMI
+    if (bmiValue <= 18.5) {
+      setBMICategory('Underweight');
+    } else if (bmiValue <= 24.9) {
+      setBMICategory('Average');
+    } else if (bmiValue <= 29.9) {
+      setBMICategory('Overweight');
+    } else if (bmiValue >= 30) {
+      setBMICategory('Obese');
+    } else {
+      setBMICategory('BMI');
+    }
+  } else if (unit === 'imperial' && h > 0 && w > 0) {
+    // Convert height from feet to inches
+    const heightInInches = h * 12;
+    const bmiValue = ((w / (heightInInches * heightInInches)) * 703).toFixed(2);
+    setBMI(bmiValue);
+
+    // Determine BMI category based on the calculated BMI
+    if (bmiValue <= 18.5) {
+      setBMICategory('Underweight');
+    } else if (bmiValue <= 24.9) {
+      setBMICategory('Average');
+    } else if (bmiValue <= 29.9) {
+      setBMICategory('Overweight');
+    } else if (bmiValue >= 30) {
+      setBMICategory('Obese');
+    } else {
+      setBMICategory('BMI');
+    }
+  } else {
+    // Handle invalid input (e.g., negative values or empty fields)
+    setBMI(null);
+    setBMICategory('');
+  }
 };
 
-export default LoginForm;
+## Step 5: Implement the `handleUnitChange` Function
 
-```
-</details>
+In this step, we'll implement the `handleUnitChange` function in the `app.js` file. This function is responsible for handling the change in units (from cm/kg to ft/lb or vice versa) when the user selects a different unit from the dropdown menu. It also resets the input fields, BMI result, and BMI category when the unit is changed.
 
-<img src="images/shipping-app-1.png" width="75%"/>
+The function is triggered when the user selects a different unit from the dropdown menu (e.target.value contains the selected unit).
+It updates the unit state variable with the newly selected unit.
+The height and weight input fields are reset to empty strings using setHeight('') and setWeight(''), ensuring that any previous values are cleared.
+The BMI result (bmi) is set to null using setBMI(null) to remove any previously calculated BMI value.
+The BMI category (bmiCategory) is also reset to an empty string using setBMICategory('') to clear any previous BMI category.
 
-**Task 2**: **Create the ShippingCalculator Component**
+```javascript
+const handleUnitChange = (e) => {
+  // Handle unit change from the dropdown
+  setUnit(e.target.value);
+  setHeight(''); // Reset height input
+  setWeight(''); // Reset weight input
+  setBMI(null); // Reset BMI result
+  setBMICategory(''); // Reset BMI category
+};
 
-1. In the ShippingCalculator component, we've imported various dependencies and data sources to support its functionality. These include React, the Chart component, LoginForm, a custom styles file, the react-select component, and data for cities in India and the United States.
+## Step 6: Finalize the `app.js` File
 
-- The component manages several state variables, including isLoggedIn to track the user's login status, freightRates to store shipping rates, packageSize to capture package size information, destination to select the delivery destination, rate for calculating shipping rates, and packageWeightUnit to specify the unit of package weight as kilograms (kg) by default.
+In this step, we'll provide the complete `app.js` file that incorporates all the previous steps' solutions. This file contains the entire React component for the BMI Calculator, including the state variables, user interface elements, event handlers, and the BMI calculation logic.
 
-2. Within the code, the `handleLogin` function is designed to set the `isLoggedIn` state to `true`, indicating a successful login.
-
-Additionally, there's an `addFreightRate` function which serves to add freight rate data. It performs input validation, checking if the `packageSize`, `destination`, and `rate` fields are all filled in. If any of these fields are empty, it triggers an alert requesting the user to fill in all the fields before proceeding.
-
-```
-const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const addFreightRate = () => {
-    if (!packageSize || !destination || !rate) {
-      alert('Please fill in all the fields.');
-      return;
-    }
-```
-3. In this code snippet, a `currency` variable is determined based on the `packageWeightUnit`. If the `packageWeightUnit` is 'kg', the currency is set to 'inr' (Indian Rupees); otherwise, it's set to 'usd' (US Dollars).
-
-- Next, a `newRate` object is created, encapsulating information such as `packageSize`, `destination`, `rate`, `currency`, and `packageWeightUnit`. This object represents a new freight rate entry.
-
-- To update the `freightRates` state, the `newRate` is added to the existing array of freight rates using the spread operator (`...`) to maintain the previous rates.
-
-- After adding the rate, the `packageSize`, `destination` (reset to `null`), and `rate` fields are cleared, ensuring a clean slate for the next rate entry.
-
-4. The getCityOptions function generates city options based on the selected packageWeightUnit. If the unit is 'kg', it retrieves city data from the IndiaCities object, and if it's 'lb' (pounds), it fetches city data from the USCities object. The function then transforms the data into an array of objects with value and label properties for use in the react-select component.
-
-For example, if the unit is 'kg', it maps the cities in India to an array of objects where each object has a value and label property representing the city and country. The resulting array contains city options suitable for populating a dropdown or selection list in the user interface.
-
-<details>
-<Summary>Click to view the code</Summary>
-
-```js
-const getCityOptions = () => {
-    if (packageWeightUnit === 'kg') {
-      return Object.keys(IndiaCities).flatMap((country) =>
-        IndiaCities[country].map((city) => ({ value: `${city}, ${country}`, label: `${city}, ${country}` }))
-      );
-    } else {
-      return Object.keys(USCities).flatMap((state) =>
-        USCities[state].map((city) => ({ value: `${city}, ${state}`, label: `${city}, ${state}` }))
-      );
-    }
-  };
-
-```
-</details>
-
-
-5. Use conditional rendering to display different components based on the `isLoggedIn` state:
-
-- If the admin is not logged in, render the LoginForm component with the handleLogin function as a prop.
-- If the admin is logged in, render the main shipping calculator interface.
-- Display the "Admin Dashboard" heading, the form to add freight rates, and the Chart component.
-
-6. Implement the JSX for the form to add freight rates:
-
-- Create a form element.
-- Inside the form, render input elements for packageSize and rate.
-- Use the className attribute to apply CSS classes for styling the input elements.
-- Implement the dropdown for package weight unit ('kg' or 'lb') using the select element and options.
-- Use the Select component for the city/state dropdown, passing the city options from the `getCityOptions` function.
-- Bind the value and `onChange` attributes of the input elements and the Select component to the respective state variables.
-
-7. Attach event handlers to the input elements and the `Add Rate` button:
-
-- Use the `onChange` event to update the packageSize, rate, and packageWeightUnit state variables as the admin enters data.
-- Implement the `addFreightRate` function as the event handler for the `Add Rate` button click.
-
-8. Display the Chart component to visualize the added freight rates:
-
-- Pass the freightRates array as a prop to the Chart component.
-
-
-9. Please check if your final code in ShippingCalculator.js file resembles the below code snippet.
-
-<details>
-<Summary>Click to view the code</Summary>
-
-```js
-
+```javascript
 import React, { useState } from 'react';
-import Chart from './Chart';
-import LoginForm from './LoginForm';
-import '../styles.css'; // Import the styles.css file
-import Select from 'react-select'; // Import the react-select component
-import IndiaCities from '../data/India-city-names.json'; // Import the India city data
-import USCities from '../data/US_States_and_Cities.json'; // Import the US city data
+import './App.css';
 
-const ShippingCalculator = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [freightRates, setFreightRates] = useState([]);
-  const [packageSize, setPackageSize] = useState('');
-  const [destination, setDestination] = useState(null);
-  const [rate, setRate] = useState('');
-  const [packageWeightUnit, setPackageWeightUnit] = useState('kg');
+function App() {
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
+  const [unit, setUnit] = useState('metric'); // Default to metric
+  const [bmi, setBMI] = useState(null);
+  const [bmiCategory, setBMICategory] = useState('');
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const addFreightRate = () => {
-    if (!packageSize || !destination || !rate) {
-      alert('Please fill in all the fields.');
-      return;
-    }
-
-    const currency = packageWeightUnit === 'kg' ? 'inr' : 'usd';
-
-    const newRate = { packageSize, destination: destination.label, rate: parseFloat(rate), currency, packageWeightUnit};
-    setFreightRates([...freightRates, newRate]);
-
-    setPackageSize('');
-    setDestination(null); // Reset the destination to null after adding the rate
-    setRate('');
-  };
-
-  // Get the appropriate cityOptions based on the selected package weight unit
-  const getCityOptions = () => {
-    if (packageWeightUnit === 'kg') {
-      return Object.keys(IndiaCities).flatMap((country) =>
-        IndiaCities[country].map((city) => ({ value: `${city}, ${country}`, label: `${city}, ${country}` }))
-      );
+  const calculateBMI = () => {
+    const h = parseFloat(height);
+    const w = parseFloat(weight);
+  
+    if (unit === 'metric' && h > 0 && w > 0) {
+      const bmiValue = (w / ((h / 100) * (h / 100))).toFixed(2);
+      setBMI(bmiValue);
+  
+      // Determine BMI category based on the calculated BMI
+      if (bmiValue <= 18.5) {
+        setBMICategory('Underweight');
+      } else if (bmiValue <= 24.9) {
+        setBMICategory('Average');
+      } else if (bmiValue <= 29.9) {
+        setBMICategory('Overweight');
+      } else if (bmiValue >= 30) {
+        setBMICategory('Obese');
+      } else {
+        setBMICategory('BMI');
+      }
+    } else if (unit === 'imperial' && h > 0 && w > 0) {
+      // Convert height from feet to inches
+      const heightInInches = h * 12;
+      const bmiValue = ((w / (heightInInches * heightInInches)) * 703).toFixed(2);
+      setBMI(bmiValue);
+  
+      // Determine BMI category based on the calculated BMI
+      if (bmiValue <= 18.5) {
+        setBMICategory('Underweight');
+      } else if (bmiValue <= 24.9) {
+        setBMICategory('Average');
+      } else if (bmiValue <= 29.9) {
+        setBMICategory('Overweight');
+      } else if (bmiValue >= 30) {
+        setBMICategory('Obese');
+      } else {
+        setBMICategory('BMI');
+      }
     } else {
-      return Object.keys(USCities).flatMap((state) =>
-        USCities[state].map((city) => ({ value: `${city}, ${state}`, label: `${city}, ${state}` }))
-      );
+      // Handle invalid input (e.g., negative values or empty fields)
+      setBMI(null);
+      setBMICategory('');
     }
+  };
+
+  const handleUnitChange = (e) => {
+    // Handle unit change from the dropdown
+    setUnit(e.target.value);
+    setHeight(''); // Reset height input
+    setWeight(''); // Reset weight input
+    setBMI(null); // Reset BMI result
+    setBMICategory(''); // Reset BMI category
   };
 
   return (
-    <div>
-      {!isLoggedIn ? (
-        <LoginForm onLogin={handleLogin} />
-      ) : (
-        <div className="shipping-calculator-container">
-          <h1>Admin Dashboard</h1>
-          <div>
-            <h2>Add Freight Rate</h2>
-            <form>
-              <div className="package-weight-container">
-                <input
-                  type="text"
-                  placeholder="Package Weight"
-                  value={packageSize}
-                  onChange={(e) => setPackageSize(e.target.value)}
-                  className="package-size-input"
-                />
-                <select
-                  className="select"
-                  value={packageWeightUnit}
-                  onChange={(e) => setPackageWeightUnit(e.target.value)}
-                >
-                  <option value="kg">KG</option>
-                  <option value="lb">LB</option>
-                </select>
-              </div>
-              <div className="city-state-dropdown">
-                <Select
-                  options={getCityOptions()} // Use the filtered cityOptions based on package weight unit
-                  value={destination}
-                  onChange={(selectedOption) => setDestination(selectedOption)}
-                  placeholder="Select City and State"
-                />
-              </div>
-              <br />
-              <div className="shipping-rate-input">
-                <input
-                  type="text"
-                  placeholder="Shipping Rate"
-                  value={rate}
-                  onChange={(e) => setRate(e.target.value)}
-                />
-                <select
-                  className="select2"
-                  value={packageWeightUnit === 'kg' ? 'inr' : 'usd'}
-                  onChange={(e) => setPackageWeightUnit(e.target.value === 'inr' ? 'kg' : 'lb')}
-                >
-                  <option value="inr" className="inr-option">
-                    INR
-                  </option>
-                  <option value="usd" className="usd-option">
-                    USD
-                  </option>
-                </select>
-              </div>
-              <button type="button" onClick={addFreightRate}>
-                Add Rate
-              </button>
-            </form>
+    <div className="container">
+      <div className="appContainer">
+        <h1 className="heading">BMI Calculator</h1>
+        <div className="input-container">
+          <label className="label">
+            Height ({unit === 'metric' ? 'CM' : 'FT'}):
+            <input
+              type="text"
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+              className="input"
+              placeholder={`Enter height (${unit === 'metric' ? 'CM' : 'FT'})`}
+            />
+          </label>
+          <label className="label">
+            Weight ({unit === 'metric' ? 'KG' : 'LB'}):
+            <input
+              type="text"
+              value={weight}
+              onChange={(e) => setWeight(e.target.value)}
+              className="input"
+              placeholder={`Enter weight (${unit === 'metric' ? 'KG' : 'LB'})`}
+            />
+          </label>
+          <div className="unit-select">
+            <label className="label">Select Units:</label>
+            <select
+              value={unit}
+              onChange={handleUnitChange}
+              className="unit-dropdown"
+            >
+              <option value="metric" className='unit-option'>cm/kg</option>
+              <option value="imperial">ft/lb</option>
+            </select>
           </div>
-          <Chart freightRates={freightRates} packageWeightUnit={packageWeightUnit} />
         </div>
-      )}
+        <button
+          onClick={calculateBMI}
+          className={`button ${bmi ? 'buttonHover' : ''}`}
+        >
+          Calculate BMI
+        </button>
+        {bmi !== null && (
+          <div className="result">
+            <h2>Your BMI: {bmi}</h2>
+            <p className={`bmi-category ${bmiCategory.toLowerCase()}`}>
+              Your BMI Category: {bmiCategory}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
-};
+}
 
-export default ShippingCalculator;
+export default App;
 
-```
-</details>
-
-10. At the end of Task 2, the UI should resemble the image shown in the screenshot below.
-
-<img src="images/Task-2.png" width="75%"/>
-
-
-**Task 3**: **Display Destination Options**
-
-1. `DestinationList` file contains city options for use in a shipping calculator from JSON files containing data for India and the United States. It iterates through the data, creating an array of city objects with corresponding values and labels. 
-
-These objects are structured with the city name and its associated country, making them suitable for use in select dropdowns or similar UI components. The resulting cityOptions array serves as a valuable resource for populating city selection elements within the shipping calculator component.
-
-```
-Object.keys(USCities).forEach((country) => {
-  USCities[country].forEach((city) => {
-    cityOptions.push({ value: `${city}, ${country}`, label: `${city}, ${country}` });
-  });
-});
-
-```
-
-2. Please refer the screenshot below showing the destination list.
-
-<img src="images/destinationlist.png" width="75%"/>
-
-**Task 4**: **Implement the Chart Component**
-
-1. This React component, known as Chart, is designed to display a shipping rate chart based on the provided `freightRates` and `packageWeightUnit` props. The chart is encapsulated within a div element with the class name `chart-container` for styling purposes.
-
-2. The table consists of a header row with three columns: `Package Weight` , `Destination`, and `Shipping Rate`. The body of the table is dynamically generated based on the freightRates prop. For each freight rate in the array, a row is created with three cells:
-
-- The first cell displays the package size and weight unit (e.g., "10 kg") using the packageSize and packageWeightUnit properties from the rate object.
-
-- The second cell shows the destination.
-
-- The third cell displays the shipping rate, which is formatted as either a USD or INR amount based on the currency property of the rate object. The rate is presented with two decimal places.
-
-The freightRates prop should be an array of objects, each containing information about a specific shipping rate. The packageWeightUnit prop determines the unit used for displaying package weight in the chart.
-
-
-3. In the first `<td>`, utilize the `${rate.packageSize} ${packageWeightUnit}` expression to present both the package size and its corresponding weight unit. This formatting will result in a clear representation, such as "10 kg" or "20 lb," effectively conveying the package's weight.
-
-4. In the second `<td>`, there's a straightforward directive to display the `rate.destination` value. This column straightforwardly reveals the destination associated with each individual shipping rate, allowing users to easily identify the intended delivery location.
-
-5. In the third `<td>`, employ the `${rate.currency === 'usd' ? '$' : '₹'}${rate.rate.toFixed(2)}` expression to showcase the shipping rate. This expression guarantees that the rate is correctly presented, featuring the appropriate currency symbol ('$' for USD or '₹' for INR) and ensuring that it is rounded to two decimal places. This precise formatting is crucial for transparency when presenting shipping costs to users.
-
-```
-<td>{rate.packageSize} ({rate.packageWeightUnit})</td>
-<td>{rate.destination}</td>
-<td>{`${rate.currency === 'usd' ? '$' : '₹'}${rate.rate.toFixed(2)}`}</td>
-
-```
-
-6. Click here to view the complete code.
-
-<details>
-<summary>Solution</summary>
-
-```js
-import React from 'react';
-
-const Chart = ({ freightRates, packageWeightUnit }) => {
-  return (
-    <div className="chart-container">
-      <h2>Shipping Rate Chart</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Package Weight</th>
-            <th>Destination</th>
-            <th>Shipping Rate</th>
-          </tr>
-        </thead>
-        <tbody>
-          {freightRates.map((rate, index) => (
-            <tr key={index}>
-              <td>{rate.packageSize} ({rate.packageWeightUnit})</td>
-              <td>{rate.destination}</td>
-              <td>{`${rate.currency === 'usd' ? '$' : '₹'}${rate.rate.toFixed(2)}`}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default Chart;
-
-```
-</details>
-
-Once the Chart component is defined, it can be integrated into the shipping calculator interface to provide users with a clear and organized view of shipping rates.
-
-Please refer the screenshot below which shows the Shipping Rate chart with both  currency types.
-
-<img src="images/chart.png" width="75%"/>
-
-
-**Task 4**: **Styling and Additional Features**
-
-1. Style the application to make it visually appealing. You can use CSS classes from the provided **styles.css** file or add your own styles.
-
-2. Add error handling to the login form and freight rate inputs, so users are prompted if any of the fields are empty or invalid.
-
-3. Include additional features such as sorting the freight rates table based on different columns, filtering rates, or displaying a chart visualization of the rates.
 
 ## Launch and view your react app on the browser
 
