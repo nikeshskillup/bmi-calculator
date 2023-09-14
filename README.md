@@ -162,6 +162,7 @@ In the `app.js` file, we define the user interface (UI) components required for 
     )}
   </div>
 </div>
+```
 
 ## Step 3: Define CSS Styles for the UI
 
@@ -277,6 +278,7 @@ body {
 .overweight {
   color: red; /* Red for Overweight */
 }
+```
 
 
 ## Step 4: Implement the `calculateBMI` Function
@@ -336,6 +338,7 @@ const calculateBMI = () => {
     setBMICategory('');
   }
 };
+```
 
 ## Step 5: Implement the `handleUnitChange` Function
 
@@ -356,6 +359,7 @@ const handleUnitChange = (e) => {
   setBMI(null); // Reset BMI result
   setBMICategory(''); // Reset BMI category
 };
+```
 
 ## Step 6: Finalize the `app.js` File
 
@@ -431,6 +435,17 @@ function App() {
       <div className="appContainer">
         <h1 className="heading">BMI Calculator</h1>
         <div className="input-container">
+        <div className="unit-select">
+            <label className="label">Select Units:</label>
+            <select
+              value={unit}
+              onChange={handleUnitChange}
+              className="unit-dropdown"
+            >
+              <option value="metric" className='unit-option'>cm/kg</option>
+              <option value="imperial">ft/lb</option>
+            </select>
+          </div>
           <label className="label">
             Height ({unit === 'metric' ? 'CM' : 'FT'}):
             <input
@@ -451,17 +466,7 @@ function App() {
               placeholder={`Enter weight (${unit === 'metric' ? 'KG' : 'LB'})`}
             />
           </label>
-          <div className="unit-select">
-            <label className="label">Select Units:</label>
-            <select
-              value={unit}
-              onChange={handleUnitChange}
-              className="unit-dropdown"
-            >
-              <option value="metric" className='unit-option'>cm/kg</option>
-              <option value="imperial">ft/lb</option>
-            </select>
-          </div>
+          
         </div>
         <button
           onClick={calculateBMI}
@@ -483,7 +488,7 @@ function App() {
 }
 
 export default App;
-
+```
 
 ## Launch and view your react app on the browser
 
