@@ -537,7 +537,15 @@ export default App;
 
 2. Once you execute the above command the server will start and can be launched in the default browser using port 3000 as shown in the screenshot below.
 
-<img src="images/bmi-app-1.png" width="75%"/>
+<img src="images/bmi-result.png" width="75%"/>
+
+The BMI Calculator application should now be accessible in your web browser.
+
+3. Enter your height in either centimeters (CM) or feet (FT) depending on the selected unit, and your weight in either kilograms (KG) or pounds (LB) depending on the selected unit.
+
+Click on the "Calculate BMI" button to see the result.
+
+<img src="images/app-test.png" width="75%"/>
 
 
 
