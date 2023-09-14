@@ -102,6 +102,7 @@ const [weight, setWeight] = useState('');
 const [unit, setUnit] = useState('metric'); // Default to metric
 const [bmi, setBMI] = useState(null);
 const [bmiCategory, setBMICategory] = useState('');
+```
 
 ## Step 2: Create UI Components
 
