@@ -76,8 +76,11 @@ The UI of the Shipping Calculator Application that you will create in this lab w
 
 ## Features
 **i.** Calculate BMI in both metric (kg/cm) and imperial (lb/in) units.
+
 **ii.** Determine BMI category (underweight, average, overweight, or obese).
+
 **iii.** Responsive design for various screen sizes.
+
 **iv.** User-friendly interface with input validation.
 
 In this project, you will leverage the power of React.js to create the BMI Calculator Application with two measuring units CM/KG and Ft/Lb.
