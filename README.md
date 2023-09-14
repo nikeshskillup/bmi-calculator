@@ -537,9 +537,7 @@ export default App;
 
 2. Once you execute the above command the server will start and can be launched in the default browser using port 3000 as shown in the screenshot below.
 
-<img src="images/Final-output1.png" width="75%"/>
-
-<img src="images/Final-output2.png" width="75%"/>
+<img src="images/bmi-app-1.png" width="75%"/>
 
 
 
