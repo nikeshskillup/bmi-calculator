@@ -614,7 +614,7 @@ Nikesh Kumar
 
 | Date | Version | Changed by | Change Description |
 |------|--------|--------|---------|
-| 2023-07-31 | 1.0 | Sapthashree K S | Initial version created |
-| 2023-09-13 | 1.1 | Lavanya Rajalingam | Review and Minor Updates |
+| 2023-09-15 | 1.0 | Nikesh Kumar | Initial version created |
+| 2023-09-15 | 1.1 | Sapthashree K S | Review and Minor Updates |
 
 ## <h3 align="center"> © Skills Network 2023. All rights reserved. <h3/>
