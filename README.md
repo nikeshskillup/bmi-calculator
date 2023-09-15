@@ -75,7 +75,7 @@ The UI of the BMI Calculator Application that you will create in this lab will b
 <img src="images/bmi-app-2.png" width="75%"/>
 
 ## Features
-**i.** Calculate BMI in both metric (kg/cm) and imperial (lb/in) units.
+**i.** Calculate BMI in both metric (kg/cm) and imperial (ft/lb) units.
 
 **ii.** Determine BMI category (underweight, average, overweight, or obese).
 
@@ -83,7 +83,7 @@ The UI of the BMI Calculator Application that you will create in this lab will b
 
 **iv.** User-friendly interface with input validation.
 
-In this project, you will leverage the power of React.js to create the BMI Calculator Application with two measuring units CM/KG and Ft/Lb.
+In this project, you will leverage the power of React.js to create the BMI Calculator Application with two measuring units cm/kg and ft/lb.
 
 React.js facilitates the management of state, UI rendering, and event handling, making it an ideal choice for building interactive and dynamic web applications.
 
@@ -103,6 +103,8 @@ In the `app.js` file, we begin by declaring the necessary `useState` variables t
 
 **v.** `bmiCategory` and `setBMICategory`: These variables store the corresponding BMI category based on the calculated BMI value.
 
+**Solution:** Change the below code in `app.js` where you get the placeholder `"Declare Required useState Variables`
+
 <details>
 <Summary>Click to view the code</Summary>
 
@@ -119,6 +121,8 @@ const [bmiCategory, setBMICategory] = useState('');
 ## Step 2: Create UI Components
 
 In the `app.js` file, we define the user interface (UI) components required for the BMI Calculator. These components include input fields for height and weight, a dropdown to select units (cm/kg or ft/lb), a button to trigger the BMI calculation, and elements to display the calculated BMI and BMI category.
+
+**Solution:** Change the below code in `app.js` where you get the placeholder `Replace your UI Componentes code here`
 
 <details>
 <Summary>Click to view the code</Summary>
@@ -180,9 +184,9 @@ In the `app.js` file, we define the user interface (UI) components required for 
 ```
 </details>
 
-## Step 3: Define CSS Styles for the UI
+## Step 3: Verify Style in `src/App.css` for the UI
 
-To style the user interface (UI) of the BMI Calculator, we utilize CSS. The following CSS styles are defined in the `app.css` file to achieve a clean and visually appealing design:
+Please verify your 'src/app.css' file for the CSS styles. If you cannot find the CSS styles in the file, you can utilize the following code within the 'app.css' file
 
 <details>
 <Summary>Click to view the code</Summary>
@@ -319,6 +323,9 @@ In this step, we'll implement the `calculateBMI` function in the `app.js` file. 
 **vii.** If any invalid input is detected (e.g., negative values or empty fields), the BMI and BMI category are reset to null and an empty string.
 
 
+**Solution:** Change the below code in `app.js` where you get the placeholder `Replace your calculateBMI function code here`
+
+
 <details>
 <Summary>Click to view the code</Summary>
 
@@ -380,6 +387,7 @@ In this step, we'll implement the `handleUnitChange` function in the `app.js` fi
 **iv.** The BMI result (bmi) is set to null using setBMI(null) to remove any previously calculated BMI value.
 **v.** The BMI category (bmiCategory) is also reset to an empty string using setBMICategory('') to clear any previous BMI category.
 
+**Solution:** Change the below code in `app.js` where you get the placeholder `Replace your handleUnitChange function code here`
 
 
 ```javascript
