@@ -600,7 +600,7 @@ Congratulations! You have successfully completed the Shipping Calculator applica
 
 ## Author(s)
 
-Sapthashree K S
+Nikesh Kumar
 
 **Change Log**
 
