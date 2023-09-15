@@ -87,7 +87,7 @@ In this project, you will leverage the power of React.js to create the BMI Calcu
 
 React.js facilitates the management of state, UI rendering, and event handling, making it an ideal choice for building interactive and dynamic web applications.
 
-**Task 1**: **Create the BMICalculator Component**
+## Create the BMICalculator Component
 
 ## Step 1: Declare Required `useState` Variables
 
@@ -604,7 +604,7 @@ Click on the "Calculate BMI" button to see the result.
    git push origin
    ```
 
-Congratulations! You have successfully completed the BMI Calculator application lab. With this application, users can log in, add freight rates, and view the rates in a chart.
+Congratulations! You have successfully completed the BMI Calculator application lab. With this application, users can calculate BMI in two units cm/kg and ft/lb.
 
 ## Author(s)
 
