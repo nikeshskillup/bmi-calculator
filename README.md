@@ -604,7 +604,7 @@ Click on the "Calculate BMI" button to see the result.
    git push origin
    ```
 
-Congratulations! You have successfully completed the Shipping Calculator application lab. With this application, users can log in, add freight rates, and view the rates in a chart.
+Congratulations! You have successfully completed the BMI Calculator application lab. With this application, users can log in, add freight rates, and view the rates in a chart.
 
 ## Author(s)
 
