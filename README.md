@@ -68,7 +68,7 @@ npm install -s
 
 ## Exercise 2: Place the UI Components
 
-The UI of the Shipping Calculator Application that you will create in this lab will be similar to the images shown below.
+The UI of the BMI Calculator Application that you will create in this lab will be similar to the images shown below.
 
 <img src="images/bmi-app-1.png" width="75%"/>
 
@@ -529,7 +529,7 @@ export default App;
 
 ## Launch and view your react app on the browser
 
-1. Make sure you are in the utckx-shipping-calculator directory and start the server by executing the following command.
+1. Make sure you are in the react-app-bmi-calculator directory and start the server by executing the following command.
 
 ```
     npm start
