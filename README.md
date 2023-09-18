@@ -3,18 +3,24 @@
 
 ## Estimated Time: 60 minutes
 
-## Objectives:
-
 Build a BMI (Body Mass Index) Calculator React Application to help users assess their physical health by entering height and weight. Calculate the BMI and display its category, enabling users to monitor their health conveniently.
+
+## Objectives:
 
 By the end of this lab, you will have achieved the following:
 
 **1.** Established a React project.
+
 **2.** Developed a user-friendly BMI Calculator application.
+
 **3.** Effectively managed data, including height, weight, BMI, and category, using `useState`.
+
 **4.** Implemented interactive features for user engagement, such as BMI calculation.
+
 **5.** Enhanced the app's appearance with stylish CSS.
+
 **6.** Conducted testing within a web browser.
+
 **7.** Employed Git for version control and collaborative work.
 
 ## Exercise 1: Setup a React Project
