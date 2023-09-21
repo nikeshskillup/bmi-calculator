@@ -90,7 +90,8 @@ The UI of the BMI Calculator Application that you will create in this lab will b
 
 <img src="images/bmi-app-2.png" width="75%"/>
 
-## Features
+## Note:
+
 **i.** Calculate BMI in both metric (kg/cm) and imperial (ft/lb) units.
 
 **ii.** Determine BMI category (underweight, average, overweight, or obese).
