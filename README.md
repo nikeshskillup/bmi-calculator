@@ -3,7 +3,7 @@
 
 ## Estimated Time: 60 minutes
 
-Build a BMI (Body Mass Index) Calculator React Application to help users assess their physical health by entering height and weight. Calculate the BMI and display its category, enabling users to monitor their health conveniently.
+Build a BMI (Body Mass Index) Calculator React Application to help users assess their physical health by inputting height and weight. Calculate the BMI and display its category, enabling users to monitor their health conveniently.
 
 ## Objectives:
 
@@ -27,7 +27,7 @@ By the end of this lab, you will have achieved the following:
 
 **Fork the sample Git repository**
 
-**1.** Go to the project repository [here](https://github.com/nikeshskillup/react-app-bmi-calculator.git) 
+**1.** Go to the project repository [here](https://github.com/sktcontentteam/react-app-bmi-calculator.git) 
 which has the partially developed code for this react project.
 
 **2.** Create a fork of the repository into your own GitHub Account. 
@@ -398,8 +398,11 @@ const calculateBMI = () => {
 In this step, we'll implement the `handleUnitChange` function in the `app.js` file. This function is responsible for handling the change in units (from cm/kg to ft/lb or vice versa) when the user selects a different unit from the dropdown menu. It also resets the input fields, BMI result, and BMI category when the unit is changed.
 
 **i.** The function is triggered when the user selects a different unit from the dropdown menu (e.target.value contains the selected unit).
+
 **ii.** It updates the unit state variable with the newly selected unit.
+
 **iii.** The height and weight input fields are reset to empty strings using setHeight('') and setWeight(''), ensuring that any previous values are cleared.
+
 **iv.** The BMI result (bmi) is set to null using setBMI(null) to remove any previously calculated BMI value.
 **v.** The BMI category (bmiCategory) is also reset to an empty string using setBMICategory('') to clear any previous BMI category.
 
